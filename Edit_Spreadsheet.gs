@@ -1,5 +1,6 @@
 /*
     Script works with a Spreadsheet to find a Cell on different Sheets and change the value and colour.
+    Attach script to Google Form with a submit trigger. Responses need to be ordered.
     Needs:
         Spreadsheet ID
         Sheet number (done with Days here)
@@ -17,6 +18,7 @@ function onFormSubmit (e)
   
   //Get the responses
   var Responses = e.response.getItemResponses();
+  
   var NameOfPBS = Responses[0].getResponse();
   var ClassName = Responses[1].getResponse();
   var DayName = Responses[2].getResponse();
