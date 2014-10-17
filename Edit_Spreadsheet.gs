@@ -6,7 +6,7 @@
         Sheet number (done with Days here)
         Something to define the Rows and Columns (Room and Period)
         New Text (Class name)
-        Optional Colout, change text colour with: setFontColor(#000000) //black
+        Optional Cell and Text Colour
     
     Andrew Hopcroft
     hopcroft.andrew@gmail.com
@@ -59,6 +59,9 @@ function onFormSubmit (e)
   else if (ColourName == "Chemistry")  var cellColour = "#ffff00";
   else if (ColourName == "Phyiscs")  var cellColour = "#ff00ff";
   
+  //Set Text Colour
+  if (ColourName == "YR 6" || ColourName == "YR 8") var cellTextColour = "#ffffff";  //White text for Dark Cell
+  else var cellTextColour = "#000000";  //Black text for Light Cell
   
   //Find the Document to edit
   var spreadsheet = SpreadsheetApp.openById(NameOfPBS);
@@ -83,7 +86,8 @@ function onFormSubmit (e)
       theCell = theCell + cellC + cellR;         //no error when done like this.
       var editCell = theSheet.getRange(theCell); //Grabbing the correct cell
       editCell.setValue(ClassName.toString());   //Change Value
-      editCell.setBackground(cellColour);        //Change Colout
+      editCell.setBackground(cellColour);        //Change Cell Colour
+      editCell.setFontColor(cellTextColour);     //Change Text Colour
     }
   }
   //Send finished email.
